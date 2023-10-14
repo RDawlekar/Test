@@ -3,7 +3,7 @@ public class Test {
  @org.testng.annotations.Test
      void browserLaunch()
     {
-System.out.println("hellow in browser");
+System.out.println("hellow in browser from launch");
     }
     @org.testng.annotations.Test
     void browserLogin() {
