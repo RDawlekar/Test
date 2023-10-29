@@ -1,9 +1,14 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1" verbose="1" >
+    <listeners>
+        <listener class-name="ExecutionListener"/>
+    </listeners>
     <test name="smoke" >
+        <parameter name="URL" value="https://rahulshettyacademy.com/seleniumPractise/#/"/>
+        <parameter name="title" value="GreenKart - veg and fruits kart"/>
         <classes>
-           <class name="testsample"/>
+           <class name="TestCases.HomePage"/>
         </classes>
     </test>
 </suite>
