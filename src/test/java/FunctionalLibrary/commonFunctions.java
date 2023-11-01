@@ -1,6 +1,5 @@
 package FunctionalLibrary;
 
-import FunctionalLibrary.BrowserClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,10 +9,7 @@ import org.testng.annotations.DataProvider;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.time.Duration;
-
-import static sun.security.util.KnownOIDs.Data;
-
-public class commonFunctions extends BrowserClass {
+public class commonFunctions {
     WebDriver driver;
     public commonFunctions(WebDriver driver)
     {

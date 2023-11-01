@@ -1,14 +1,20 @@
 package TestCases;
 
-import FunctionalLibrary.BrowserClass;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
-public class HomePage extends BrowserClass {
-BrowserClass browserClass=new BrowserClass() {
-    @Override
-    public void browserLaunch(String Url,String title) {
-        super.browserLaunch(Url,title);
+
+public class HomePage   {
+    WebDriver driver;
+
+
+    @Test
+    @Parameters({"URL" , "title"})
+    public void Launchbrowser(String URL,String title)
+    {
+
     }
-};
 
 
 }
