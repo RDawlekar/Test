@@ -7,7 +7,7 @@
         <parameter name="URL" value="https://rahulshettyacademy.com/seleniumPractise/#/"/>
         <parameter name="title" value="GreenKart - veg and fruits kart"/>
         <classes>
-           <class name="FunctionalLibrary.TestBase"/>
+           <class name="TestCases.HomePage"/>
         </classes>
     </test>
 </suite>

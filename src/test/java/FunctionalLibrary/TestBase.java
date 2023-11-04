@@ -8,17 +8,13 @@ import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
 
-public class TestBase{
-    WebDriver driver;
 
-@BeforeMethod
-   public void BeforeMethod(Method method){System.out.println("hellow in browser from launch");
-    System.out.println("Method execution started :"+method.getName());
-    System.setProperty("TestCaseName",method.getName());
-    }
+public abstract class TestBase{
+    public static WebDriver driver;
 
-@Test
-@Parameters({"URL" , "title"})
+
+    @BeforeMethod
+    @Parameters({"URL" , "title"})
     public void browserLaunch(String Url, String title)
     {
         try{
@@ -26,7 +22,7 @@ public class TestBase{
 //            System.setProperty("driver.chrome.driver","C:\\Users\\rkuma\\Downloads\\chrome-win64\\chrome-win64\\chromedriver.exe");
                 driver=new ChromeDriver();
                 driver.get(Url);
-        CheckTitle(driver,title);
+                CheckTitle(driver,title);
    }
        catch(Exception e)
         {
@@ -35,13 +31,19 @@ public class TestBase{
         }
 
     }
-
-
     void CheckTitle(WebDriver driver,String title) {
        Assert.assertEquals( driver.getTitle(),title);
        Reporter.log("successfully launched the site");
     }
-
-
+@AfterMethod
+public  void close()
+{
+    driver.close();
+    driver.quit();
+}
+    public static WebDriver getDriver()
+    {
+        return  driver;
+    }
 }
 

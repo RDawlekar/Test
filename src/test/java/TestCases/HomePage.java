@@ -1,18 +1,26 @@
 package TestCases;
 
+import FunctionalLibrary.TestBase;
+import Mappings.HomePageMappings;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class HomePage   {
-    WebDriver driver;
 
+public class HomePage extends TestBase {
 
     @Test
-    @Parameters({"URL" , "title"})
-    public void Launchbrowser(String URL,String title)
+    public void verifyPage()
     {
+        HomePageMappings HM =new HomePageMappings(TestBase.driver);
+        List<String> ActualList= HomePageMappings.GetItemNames();
+        for (String ele:ActualList)
+        {
+            System.out.print(ele+ " ");
+        }
+
 
     }
 

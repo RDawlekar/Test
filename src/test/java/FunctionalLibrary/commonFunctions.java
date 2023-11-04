@@ -9,19 +9,15 @@ import org.testng.annotations.DataProvider;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.time.Duration;
-public class commonFunctions {
+public class commonFunctions extends  TestBase {
     WebDriver driver;
-    public commonFunctions(WebDriver driver)
+    public commonFunctions()
     {
-        this.driver=driver;
+        this.driver=TestBase.driver;
 
     }
 
-    public  void explicitWait()
-    {
-        WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("")));
-    }
+
 @DataProvider(name="ReadExcelData")
     public Object[][] readExcelData(Class ExcelData)
     {
