@@ -1,6 +1,7 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Suite1" verbose="1" >
     <listeners>
+        <listener class-name="FunctionalLibrary.SuiteListner"/>
         <listener class-name="FunctionalLibrary.TestListeners"/>
     </listeners>
     <test name="smoke" >

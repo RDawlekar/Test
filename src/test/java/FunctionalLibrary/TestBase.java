@@ -13,7 +13,7 @@ import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.lang.reflect.Method;
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Iterator;
@@ -57,14 +57,10 @@ public  void close()
     }
 
 
-    public static String getScreenshot(String MethodName,WebDriver driver)
-    {
-//        String currentUsersHomeDir = System.getProperty("user.dir");
-//        String otherFolder = currentUsersHomeDir+"\\Reports\\"+MethodName+"\\ScreenShots\\"+MethodName+"_"+Date.valueOf(LocalDate.now())+"_"+System.currentTimeMillis()+".png";
-        File path=new File(System.getProperty("ReportPath")+"\\"+MethodName+"\\"+Date.valueOf(LocalDate.now())+"_"+System.currentTimeMillis()+".png");
+    public static String getScreenshot(String MethodName,WebDriver driver)  {
+        File path=new File(System.getProperty("user.dir")+"\\Reports\\"+MethodName+"_"+Date.valueOf(LocalDate.now())+"_"+System.currentTimeMillis()+"\\"+Date.valueOf(LocalDate.now())+"_"+System.currentTimeMillis()+".png");
         try
         {
-
             TakesScreenshot screenshot=(TakesScreenshot)driver;
             File screenPath=screenshot.getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenPath,path);
@@ -73,6 +69,16 @@ public  void close()
             e.printStackTrace();
             }
     return path.getPath();
+    }
+    public static void cleanReports() {
+        try {
+            File currentUsersHomeDir = new File(System.getProperty("user.dir") + "\\Reports");
+            if (FileUtils.sizeOfDirectory(currentUsersHomeDir) > 0) {
+                FileUtils.deleteDirectory(currentUsersHomeDir);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

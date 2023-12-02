@@ -1,29 +1,16 @@
 package TestCases;
 
-import FunctionalLibrary.HomeDateDataModel;
+import FunctionalLibrary.dataDriven;
 import FunctionalLibrary.TestBase;
 import Mappings.HomePageMappings;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class HomePage extends TestBase {
-    @Test()
-    public void verifyPage()
-    {
-        HomePageMappings HM =new HomePageMappings(TestBase.driver);
-        List<String> ActualList= HomePageMappings.GetItemNames();
-        for (String ele:ActualList)
-        {
-            System.out.print(ele+ " ");
-        }
+    @Test(dataProvider = "getdata",dataProviderClass = dataDriven.class)
+    public void verifyPage(String productNametoSelect,String qtyToAdd) throws InterruptedException {
+        HomePageMappings homePageMappings=new HomePageMappings();
+        homePageMappings.ModifyQuantity(productNametoSelect,qtyToAdd);
+        homePageMappings.AddItemToCart(productNametoSelect);
 
-//        System.out.print("product to select"+productNametoSelect);
     }
-
-
 }

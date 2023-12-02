@@ -14,29 +14,5 @@ public class commonFunctions extends  TestBase {
     public commonFunctions()
     {
         this.driver=TestBase.driver;
-
-    }
-
-
-@DataProvider(name="ReadExcelData")
-    public Object[][] readExcelData(Class ExcelData)
-    {
-        String ExcelSheetName=System.getProperty("TestCaseName");
-        Object[][] Data=getExcelData(ExcelSheetName);
-
-        return Data;
-    }
-    public Object[][] getExcelData(String ExcelSheetName)  {
-        Object[][] Data=null;
-        try{
-
-            FileInputStream fs=new FileInputStream("C:\\TestData\\"+ExcelSheetName+".xlsx");
-
-
-        }catch (Exception e){
-
-        }
-
-        return  Data;
     }
 }

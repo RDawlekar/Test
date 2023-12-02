@@ -1,5 +1,3 @@
-package FunctionalLibrary;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -10,14 +8,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Iterator;
 
-public class HomeDateDataModel {
+public class Datapro {
     @DataProvider(name="getdata")
-    public Object[][] getexcelData(String excelSheet,String result)
+    public static Object[][] getexcelData(String excelSheet,String result)
     {
         Object[][] data=getdata(System.getProperty("user.dir")+"\\TestData\\"+excelSheet+".xlsx",excelSheet);
         return data;
     }
-    public Object[][] getdata(String filepath,String name) {
+
+    public static Object[][] getdata(String filepath,String name) {
         Object[][] exceldetails = null;
 
 
@@ -55,6 +54,4 @@ public class HomeDateDataModel {
         }
         return exceldetails;
     }
-
-
 }
