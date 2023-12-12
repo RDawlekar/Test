@@ -18,10 +18,10 @@ import java.util.List;
 
 import static FunctionalLibrary.TestListeners.test;
 
-public class HomePageMappings extends TestBase {
-public WebDriver driver;
-      public HomePageMappings(){
-          this.driver= TestBase.getDriver();
+public class HomePageMappings {
+WebDriver driver;
+      public HomePageMappings(WebDriver driver){
+          this.driver= driver;
         PageFactory.initElements(driver,this);
     }
 
@@ -30,7 +30,7 @@ public WebDriver driver;
     @FindBy(className="product-price")
     public  List<WebElement> Pricelist;
     @FindBy(className="product-name")
-    public static   List<WebElement> Productname;
+    public static  List<WebElement> Productname;
 
     @FindBys({
             @FindBy(className="product-action"),
@@ -38,18 +38,23 @@ public WebDriver driver;
     })
     public  WebElement AddToCart;
 
+    @Test()
     public  List<String> GetItemNames()
     {
         List<String> ActualList=new ArrayList<>();
-        for (WebElement ele: Productname )
+        for (WebElement ele: Productname ) {
             ActualList.add(ele.getText());
+        }
+        test.log(Status.PASS,"Successfully fetched item " +ActualList);
         return  ActualList;
     }
+
+
     public  void AddItemToCart(String itemName)
     {
        for (WebElement webelement: Productname)
        {
-           if(webelement.getText().equals(itemName))
+           if(webelement.getText().split("-")[0].trim().equals(itemName))
            {
            driver.findElement(By.xpath("//h4[contains(text(),'"+itemName+"')]//following::*[@class='product-action']")).click();
                test.log(Status.PASS,"Successfully added item " +itemName +"to cart ");
